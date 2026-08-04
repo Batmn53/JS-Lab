@@ -1,0 +1,306 @@
+/* ===== Global Styles ===== */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  text-align: center;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    Segoe UI,
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(circle at top left, #4f46e5, #312e81),
+    radial-gradient(circle at bottom right, #06b6d4, #0f172a);
+
+  background-blend-mode: screen;
+  padding: 40px;
+}
+
+/* ===== Form Container ===== */
+
+#formContainer {
+  width: 450px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 20px;
+
+  padding: 35px;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+
+  animation: fadeIn 0.8s ease;
+}
+
+/* ===== Heading ===== */
+
+h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+p {
+  text-align: center;
+  color: #d6d6d6;
+  margin-bottom: 30px;
+}
+
+/* ===== Each Field ===== */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+
+  transition: 0.3s ease;
+}
+
+.form-field:hover {
+  transform: translateX(6px);
+}
+
+/* ===== Labels ===== */
+
+.form-field label {
+  margin-bottom: 8px;
+
+  color: white;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+}
+
+/* ===== Inputs ===== */
+
+.form-field input {
+  padding: 14px 18px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  color: white;
+
+  font-size: 15px;
+
+  transition: 0.35s;
+
+  border: 2px solid transparent;
+}
+
+/* Placeholder */
+
+.form-field input::placeholder {
+  color: #d0d0d0;
+}
+
+/* Focus Effect */
+
+.form-field input:focus {
+  background: white;
+
+  color: #222;
+
+  border-color: #60a5fa;
+
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
+
+  transform: scale(1.02);
+}
+
+/* ===== Submit Button ===== */
+
+#submitBtn {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-top: 15px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  color: white;
+
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+
+  transition: 0.3s;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+#submitBtn:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+}
+
+#submitBtn:active {
+  transform: scale(0.97);
+}
+
+/* ===== Entrance Animation ===== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* Background overlay */
+
+.modal {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(5px);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* Show modal */
+
+.modal.show {
+  display: flex;
+}
+
+/* Modal box */
+
+.modal-content {
+  width: 420px;
+
+  padding: 35px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  animation: pop 0.35s ease;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.modal-content h2 {
+  color: #2563eb;
+
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: #444;
+
+  margin-bottom: 25px;
+
+  font-size: 18px;
+}
+
+.modal-content button {
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+
+  transition: 0.25s;
+}
+
+.modal-content button:hover {
+  background: #1d4ed8;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}

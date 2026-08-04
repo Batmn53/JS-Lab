@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration Validator</title>
+    <link rel="stylesheet" href="vehicle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vehicle Validator</h1>
+        <p>Enter an Indian vehicle registration number (e.g., MH 01 AB 1234)</p>
+        
+        <input type="text" id="reg-number" placeholder="Enter Registration Number" onkeyup="checkEnter(event)">
+        
+        <button onclick="validateVehicle()">Validate</button>
+        
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script src="vehicle.js"></script>
+</body>
+</html>
