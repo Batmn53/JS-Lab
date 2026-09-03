@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e9e4f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(110, 80, 160, 0.1);
+    display: flex;
+    flex-direction: row;
+    width: 950px;
+    max-width: 100%;
+}
+
+.left-section {
+    flex: 1;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 26px;
+    color: #3b2a59;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 35px;
+}
+
+.input-wrapper {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper label {
+    font-size: 14px;
+    color: #3b2a59;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d4cde3;
+    border-radius: 8px;
+    background-color: #fcfbfe;
+    font-size: 15px;
+    color: #444;
+    outline: none;
+    resize: none;
+    height: 150px;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #8e6cc8;
+}
+
+button {
+    background-color: #8e6cc8;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: auto;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #795bb5;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.separator {
+    width: 1px;
+    background-color: #e5def0;
+    margin: 45px 0;
+}
+
+.right-section {
+    flex: 1;
+    padding: 45px;
+    background-color: #ffffff;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+h2 {
+    font-size: 22px;
+    color: #3b2a59;
+    margin-bottom: 30px;
+}
+
+.output-box {
+    background-color: #f9f7fc;
+    border: 1px solid #ebe5f5;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 18px;
+    transition: transform 0.2s;
+}
+
+.output-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(142, 108, 200, 0.08);
+}
+
+.output-box h4 {
+    font-size: 14px;
+    color: #554477;
+    margin-bottom: 8px;
+}
+
+.output-text {
+    font-size: 15px;
+    color: #666;
+    word-break: break-word;
+}

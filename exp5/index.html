@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-hover: #4338CA;
+      --bg: #F3F4F6;
+      --surface: #FFFFFF;
+      --text: #1F2937;
+      --text-light: #6B7280;
+      --border: #E5E7EB;
+      --danger: #EF4444;
+      --danger-hover: #DC2626;
+      --success: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--surface);
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 24px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .input-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .input-field {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-field label {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-light);
+    }
+
+    input {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      background: #F9FAFB;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      background: white;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      flex: 1 1 100%;
+      margin-top: 10px;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .btn-danger:hover {
+      background: var(--danger-hover);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: #F9FAFB;
+      font-weight: 600;
+      color: var(--text-light);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      font-size: 15px;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr {
+      transition: background 0.2s;
+    }
+
+    tbody tr:hover {
+      background: #F9FAFB;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-light);
+      font-size: 15px;
+    }
+
+    .summary-section {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .summary-card {
+      flex: 1;
+      min-width: 250px;
+      background: #F9FAFB;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .summary-card h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-list {
+      list-style: none;
+    }
+
+    .summary-list li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .summary-list li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 24px;
+      background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .result-row.total {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 0;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid var(--danger);
+      transform: translateX(150%);
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 1000;
+      font-weight: 500;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    .toast.success {
+      border-left-color: var(--success);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Shopping Cart</h2>
+
+    <div class="input-group">
+      <div class="input-field">
+        <label for="name">Product Name</label>
+        <input type="text" id="name" placeholder="e.g. Wireless Mouse">
+      </div>
+      <div class="input-field">
+        <label for="price">Price (₹)</label>
+        <input type="number" id="price" placeholder="0.00" min="0" step="0.01">
+      </div>
+      <div class="input-field">
+        <label for="qty">Quantity</label>
+        <input type="number" id="qty" placeholder="1" min="1">
+      </div>
+      <button class="btn-primary" onclick="addProduct()">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+        Add to Cart
+      </button>
+    </div>
+
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cartBody">
+        <tr>
+          <td colspan="5" class="empty-cart">Your cart is empty. Add some products!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="resultContainer" style="display: none;">
+      <div class="result-box" id="result"></div>
+      
+      <div class="summary-section">
+        <div class="summary-card">
+          <h3>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            Item Summary
+          </h3>
+          <ul class="summary-list" id="summary"></ul>
+        </div>
+        
+        <div class="summary-card">
+          <h3>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            Premium Items (&gt; ₹1000)
+          </h3>
+          <ul class="summary-list" id="expensive"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Message</div>
+
+  <script>
+    let cart = [];
+    let nextId = 1;
+    let toastTimeout;
+
+    function showToast(message, type = 'error') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast show ${type === 'success' ? 'success' : ''}`;
+      
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.className = 'toast';
+      }, 3000);
+    }
+
+    function addProduct() {
+      let name = document.getElementById("name").value.trim();
+      let price = parseFloat(document.getElementById("price").value);
+      let qty = parseInt(document.getElementById("qty").value);
+
+      if (name === "" || isNaN(price) || isNaN(qty) || price < 0 || qty < 1) {
+        showToast("Please enter valid product details.");
+        return;
+      }
+
+      let product = {
+        id: nextId++,
+        name: name,
+        price: price,
+        quantity: qty
+      };
+
+      cart.push(product);
+      displayCart();
+      showToast(`${name} added to cart!`, 'success');
+
+      document.getElementById("name").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("qty").value = "";
+      document.getElementById("name").focus();
+    }
+
+    function removeProduct(id) {
+      cart = cart.filter(item => item.id !== id);
+      displayCart();
+      showToast("Item removed from cart", 'success');
+    }
+
+    function displayCart() {
+      let tbody = document.getElementById("cartBody");
+      let resultContainer = document.getElementById("resultContainer");
+
+      if (cart.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="empty-cart">Your cart is empty. Add some products!</td></tr>`;
+        resultContainer.style.display = "none";
+        return;
+      }
+
+      resultContainer.style.display = "block";
+      tbody.innerHTML = "";
+
+      cart.forEach(function (item) {
+        tbody.innerHTML += `
+          <tr>
+            <td><strong>${item.name}</strong></td>
+            <td>₹${item.price.toFixed(2)}</td>
+            <td>${item.quantity}</td>
+            <td>₹${(item.price * item.quantity).toFixed(2)}</td>
+            <td>
+              <button class="btn-danger" onclick="removeProduct(${item.id})" title="Remove Item">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+
+      let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      let discount = 0;
+      let discountRate = 0;
+
+      if (total >= 50000) {
+        discountRate = 20;
+      } else if (total >= 20000) {
+        discountRate = 10;
+      } else if (total >= 5000) {
+        discountRate = 5;
+      }
+
+      discount = total * (discountRate / 100);
+      let finalAmount = total - discount;
+
+      document.getElementById("result").innerHTML = `
+        <div class="result-row">
+          <span>Subtotal</span>
+          <span>₹${total.toFixed(2)}</span>
+        </div>
+        ${discountRate > 0 ? `
+        <div class="result-row">
+          <span>Discount (${discountRate}%)</span>
+          <span>-₹${discount.toFixed(2)}</span>
+        </div>` : ''}
+        <div class="result-row total">
+          <span>Total Amount</span>
+          <span>₹${finalAmount.toFixed(2)}</span>
+        </div>
+      `;
+
+      let summary = document.getElementById("summary");
+      summary.innerHTML = "";
+      cart.map(item => {
+        summary.innerHTML += `
+          <li>
+            <span>${item.quantity}x ${item.name}</span>
+            <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+          </li>
+        `;
+      });
+
+      let expensive = document.getElementById("expensive");
+      expensive.innerHTML = "";
+      let exp = cart.filter(item => item.price > 1000);
+      
+      if (exp.length === 0) {
+        expensive.innerHTML = `<li style="color: var(--text-light); justify-content: center; border: none;">No premium items</li>`;
+      } else {
+        exp.forEach(item => {
+          expensive.innerHTML += `
+            <li>
+              <span>${item.name}</span>
+              <span>₹${item.price.toFixed(2)}</span>
+            </li>
+          `;
+        });
+      }
+    }
+  </script>
+
+</body>
+
+</html>

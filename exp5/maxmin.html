@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            /* Vibrant cyan/blue gradient like the screenshot */
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            display: flex;
+            gap: 2rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Left Side: Results Panel */
+        .results-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 250px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            height: 220px;
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .result-card.topper {
+            background: linear-gradient(135deg, #fff9c4 0%, #ffecb3 100%);
+        }
+
+        .result-card.lowest {
+            background: linear-gradient(135deg, #ffcdd2 0%, #ffccbc 100%);
+        }
+
+        .result-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .result-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-card .name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* Right Side: Main Panel */
+        .main-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            flex: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            color: #1e3a8a;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            color: #4b5563;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            color: #1e3a8a;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .inputs-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #111;
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            padding: 0.8rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .input-group input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .buttons-grid button {
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .buttons-grid button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-full {
+            grid-column: span 2;
+        }
+
+        .btn-primary {
+            background: #1d4ed8; /* Blue */
+            color: white;
+        }
+
+        .btn-primary:hover { background: #1e40af; }
+
+        .btn-secondary {
+            background: #2563eb; /* Slightly lighter blue */
+            color: white;
+        }
+
+        .btn-secondary:hover { background: #1d4ed8; }
+
+        .btn-success {
+            background: #15803d; /* Green */
+            color: white;
+            margin-top: 0.5rem;
+        }
+
+        .btn-success:hover { background: #166534; }
+
+        .status {
+            text-align: center;
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+            }
+            .results-panel {
+                width: 100%;
+                flex-direction: row;
+            }
+            .result-card {
+                flex: 1;
+                height: auto;
+                padding: 1.5rem;
+            }
+            .inputs-container {
+                flex-direction: column;
+            }
+            .buttons-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn-full {
+                grid-column: span 1;
+            }
+            .header {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="results-panel">
+        <div class="result-card topper">
+            <div class="emoji">🏆</div>
+            <h3>Topper</h3>
+            <div class="name" id="topperName">-</div>
+        </div>
+        <div class="result-card lowest">
+            <div class="emoji">📉</div>
+            <h3>Lowest Marks</h3>
+            <div class="name" id="lowestName">-</div>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <div class="header">
+            <h1>Student Marks Analysis</h1>
+            <p>Student Performance using Arrays, Objects and Array Methods</p>
+        </div>
+
+        <div class="section-title">Enter Student Details</div>
+        
+        <div class="inputs-container">
+            <div class="input-group">
+                <label>Student Name</label>
+                <input type="text" id="studentName" placeholder="Name">
+            </div>
+            <div class="input-group">
+                <label>PRN</label>
+                <input type="number" id="studentPrn" placeholder="PRN">
+            </div>
+            <div class="input-group">
+                <label>Marks</label>
+                <input type="number" id="studentMarks" placeholder="Marks">
+            </div>
+        </div>
+
+        <div class="buttons-grid">
+            <button class="btn-primary btn-full" onclick="addStudent('push')">Add Student (push)</button>
+            
+            <button class="btn-secondary" onclick="addStudent('unshift')">Add Student at Beginning (unshift)</button>
+            <button class="btn-secondary" onclick="removeStudent('pop')">Remove Last Student (pop)</button>
+            
+            <button class="btn-secondary" onclick="checkArray()">Check Array in Console</button>
+            <button class="btn-secondary" onclick="removeStudent('shift')">Remove First Student (shift)</button>
+            
+            <button class="btn-success btn-full" onclick="analyzePerformance()">Analyze Student Performance</button>
+        </div>
+
+        <div class="status" id="statusText">0 student(s) currently stored.</div>
+    </div>
+</div>
+
+<script src="maxmin.js"></script>
+</body>
+</html>
