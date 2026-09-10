@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="register-card">
+            <div class="header">
+                <h1>Create Account</h1>
+                <p>Fill in your details to register</p>
+                <div class="mandatory-badge">* Mandatory to fill</div>
+            </div>
+
+            <form id="registerForm">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="firstname">Firstname <span class="req">*</span></label>
+                        <input type="text" id="firstname" name="firstname" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Doe">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <div class="birthday-group">
+                        <select id="bday-day" name="bday-day">
+                            <option value="">Day</option>
+                            <!-- JS will populate -->
+                        </select>
+                        <select id="bday-month" name="bday-month">
+                            <option value="">Month</option>
+                            <option value="Jan">Jan</option>
+                            <option value="Feb">Feb</option>
+                            <option value="Mar">Mar</option>
+                            <option value="Apr">Apr</option>
+                            <option value="May">May</option>
+                            <option value="Jun">Jun</option>
+                            <option value="Jul">Jul</option>
+                            <option value="Aug">Aug</option>
+                            <option value="Sep">Sep</option>
+                            <option value="Oct">Oct</option>
+                            <option value="Nov">Nov</option>
+                            <option value="Dec">Dec</option>
+                        </select>
+                        <select id="bday-year" name="bday-year">
+                            <option value="">Year</option>
+                            <!-- JS will populate -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username <span class="req">*</span></label>
+                    <input type="text" id="username" name="username" placeholder="johndoe123" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" id="website" name="website" placeholder="https://example.com">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="password">Password <span class="req">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="repassword">Re-password <span class="req">*</span></label>
+                        <input type="password" id="repassword" name="repassword" placeholder="••••••" required>
+                    </div>
+                </div>
+
+                <div class="terms-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the terms & conditions.</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>
