@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Seminar Schedule Planner</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="planner-container">
+
+    <div class="planner-card">
+
+      <h1>Seminar Schedule Planner</h1>
+
+      <p class="subtitle">
+        Click on a seminar to view and save its details.
+      </p>
+
+      <!-- Schedule Table -->
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Begin</th>
+              <th>End</th>
+              <th>Topic</th>
+            </tr>
+          </thead>
+
+          <tbody id="scheduleBody">
+            <!-- JavaScript generates the schedule here -->
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- Action Buttons -->
+      <div class="actions">
+
+        <button id="saveTopicBtn" class="btn" disabled>
+          Save Topic
+        </button>
+
+        <button id="saveDayBtn" class="btn" disabled>
+          Save Day
+        </button>
+
+        <button id="clearAllBtn" class="btn clear-btn">
+          Clear All
+        </button>
+
+      </div>
+
+
+      <!-- Status message -->
+      <div id="statusMessage" class="status-message"></div>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

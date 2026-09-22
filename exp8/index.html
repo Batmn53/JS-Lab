@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titan Fitness - Membership Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="header">
+                <h1>Titan Fitness</h1>
+                <p>Join the elite. Start your journey today.</p>
+            </div>
+            
+            <form id="registrationForm">
+                <!-- Personal Information -->
+                <div class="section-title">Personal Information</div>
+                
+                <div class="input-group row">
+                    <div class="input-box">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+
+                <div class="input-group row">
+                    <div class="input-box">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+                    </div>
+                </div>
+
+                <div class="input-group row">
+                    <div class="input-box">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="gender" value="male" required> Male</label>
+                            <label class="radio-label"><input type="radio" name="gender" value="female"> Female</label>
+                            <label class="radio-label"><input type="radio" name="gender" value="other"> Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membership Details -->
+                <div class="section-title">Membership Details</div>
+
+                <div class="input-group row">
+                    <div class="input-box">
+                        <label for="membershipType">Membership Plan</label>
+                        <select id="membershipType" name="membershipType" required>
+                            <option value="" disabled selected>Select a plan</option>
+                            <option value="basic">Basic (Gym Access)</option>
+                            <option value="premium">Premium (Gym + Classes)</option>
+                            <option value="vip">VIP (All Access + Trainer)</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <label for="branch">Preferred Branch</label>
+                        <select id="branch" name="branch" required>
+                            <option value="" disabled selected>Select a branch</option>
+                            <option value="downtown">Downtown Core</option>
+                            <option value="uptown">Uptown Elite</option>
+                            <option value="suburbs">Suburban Wellness</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Duration</label>
+                    <div class="radio-group cards">
+                        <label class="radio-card">
+                            <input type="radio" name="duration" value="1" required>
+                            <div class="card-content">
+                                <span class="title">1 Month</span>
+                                <span class="price">Standard</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="duration" value="3">
+                            <div class="card-content">
+                                <span class="title">3 Months</span>
+                                <span class="price">Save 10%</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="duration" value="6">
+                            <div class="card-content">
+                                <span class="title">6 Months</span>
+                                <span class="price">Save 15%</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="duration" value="12">
+                            <div class="card-content">
+                                <span class="title">1 Year</span>
+                                <span class="price">Save 25%</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Fitness Goals -->
+                <div class="section-title">Fitness Goals</div>
+                <div class="input-group">
+                    <label>What are your primary goals? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="goals" value="weight_loss"> Weight Loss</label>
+                        <label class="checkbox-label"><input type="checkbox" name="goals" value="muscle_gain"> Muscle Gain</label>
+                        <label class="checkbox-label"><input type="checkbox" name="goals" value="endurance"> Endurance</label>
+                        <label class="checkbox-label"><input type="checkbox" name="goals" value="flexibility"> Flexibility</label>
+                        <label class="checkbox-label"><input type="checkbox" name="goals" value="general"> General Fitness</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="comments">Medical Conditions or Additional Comments (Optional)</label>
+                    <textarea id="comments" name="comments" rows="3" placeholder="Let us know if you have any specific needs..."></textarea>
+                </div>
+
+                <div class="input-group agreement">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Complete Registration</button>
+            </form>
+            
+            <div id="successMessage" class="hidden">
+                <div class="success-icon">✓</div>
+                <h2>Registration Successful!</h2>
+                <p>Welcome to Titan Fitness. We have sent a confirmation email with your membership details.</p>
+                <button id="resetBtn" class="reset-btn">Register Another Member</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

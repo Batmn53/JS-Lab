@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina - Premium E-Commerce</title>
+    <link rel="stylesheet" href="shop-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">E-Commerce Store</div>
+        <div class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="badge">0</span></div>
+    </nav>
+
+    <header class="hero">
+        <h1>Discover Premium Essentials</h1>
+        <p>Curated collections for your modern lifestyle.</p>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h3>Search</h3>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Categories</h3>
+                <div class="category-filters">
+                    <label class="radio-label"><input type="radio" name="category" value="all" checked> All Products</label>
+                    <label class="radio-label"><input type="radio" name="category" value="electronics"> Electronics</label>
+                    <label class="radio-label"><input type="radio" name="category" value="fashion"> Fashion</label>
+                    <label class="radio-label"><input type="radio" name="category" value="home"> Home & Living</label>
+                    <label class="radio-label"><input type="radio" name="category" value="accessories"> Accessories</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <div class="price-inputs">
+                    <input type="number" id="minPrice" placeholder="Min $">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" placeholder="Max $">
+                </div>
+                <button id="applyPriceBtn" class="btn-outline">Apply</button>
+            </div>
+        </aside>
+
+        <section class="products-section">
+            <div class="products-header">
+                <p id="resultCount">Showing 0 products</p>
+                <div class="sort-box">
+                    <label for="sortSelect">Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-a-z">Name: A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products injected via JS -->
+            </div>
+        </section>
+    </main>
+    <script src="shop-script.js"></script>
+</body>
+</html>

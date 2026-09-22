@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>User Preferences</title>
+
+  <link rel="stylesheet" href="preferences.css">
+
+</head>
+
+
+<body>
+
+  <main class="page-shell">
+
+    <section class="card">
+
+
+      <!-- HEADER -->
+
+      <div class="header">
+
+        <div>
+
+          <p class="eyebrow">
+            Application Settings
+          </p>
+
+          <h1>
+            User Preferences
+          </h1>
+
+          <p class="subtitle">
+            Customize the planner and persist your choices
+            using browser storage.
+          </p>
+
+        </div>
+
+
+        <a class="secondary-link" href="schedule.html">
+          ← Schedule Planner
+        </a>
+
+      </div>
+
+
+
+      <!-- FORM -->
+
+      <form id="preferencesForm">
+
+
+        <!-- USERNAME -->
+
+        <div class="field">
+
+          <label for="username">
+            Username
+          </label>
+
+          <input id="username" name="username" type="text" placeholder="Enter your username" autocomplete="name">
+
+          <small>
+            Saved permanently with localStorage.
+          </small>
+
+        </div>
+
+
+
+        <!-- THEME -->
+
+        <div class="field">
+
+          <label for="theme">
+            Choose Theme
+          </label>
+
+          <select id="theme" name="theme">
+
+            <option value="light">
+              Light
+            </option>
+
+            <option value="dark">
+              Dark
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- ACCENT COLOR -->
+
+        <div class="field">
+
+          <label for="accentColor">
+            Choose Accent Color
+          </label>
+
+          <select id="accentColor" name="accentColor">
+
+            <option value="teal">
+              Teal
+            </option>
+
+            <option value="indigo">
+              Indigo
+            </option>
+
+            <option value="amber">
+              Amber
+            </option>
+
+            <option value="rose">
+              Rose
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="actions">
+
+          <button class="btn primary" type="submit">
+            Save Preferences
+          </button>
+
+
+          <button class="btn secondary" type="button" id="clearBtn">
+            Clear Preferences
+          </button>
+
+        </div>
+
+      </form>
+
+
+
+      <!-- STORAGE INFORMATION -->
+
+      <div class="storage-panel">
+
+
+        <div>
+
+          <span>
+            localStorage
+          </span>
+
+          <strong id="localStorageStatus">
+            No preferences saved
+          </strong>
+
+          <small>
+            Persists after closing and reopening the browser.
+          </small>
+
+        </div>
+
+
+
+        <div>
+
+          <span>
+            sessionStorage
+          </span>
+
+          <strong id="sessionStorageStatus">
+            No current-session preference
+          </strong>
+
+          <small>
+            Used for the current page/session state.
+          </small>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- STATUS MESSAGE -->
+
+      <div id="message" class="message" aria-live="polite"></div>
+
+
+    </section>
+
+  </main>
+
+
+
+  <script src="preferences.js"></script>
+
+</body>
+
+</html>

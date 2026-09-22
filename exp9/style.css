@@ -1,0 +1,318 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: #f5f0fa;
+
+  color: #332a3d;
+
+  padding: 40px 20px;
+}
+
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.planner-container {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+}
+
+
+/* ================================
+   CARD
+================================ */
+
+.planner-card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 32px;
+
+  box-shadow:
+    0 8px 30px rgba(80, 60, 100, 0.12);
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+h1 {
+  text-align: center;
+
+  color: #563a75;
+
+  font-size: 30px;
+
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+
+  color: #77707e;
+
+  font-size: 14px;
+
+  margin-bottom: 28px;
+}
+
+
+/* ================================
+   TABLE
+================================ */
+
+.table-container {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #ddd5e5;
+
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+
+  min-width: 700px;
+
+  border-collapse: collapse;
+}
+
+
+/* ================================
+   TABLE HEADER
+================================ */
+
+thead th {
+  background: #d8c6ea;
+
+  color: #45334f;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  padding: 15px;
+
+  text-align: left;
+
+  border-right: 1px solid #c8b5da;
+}
+
+thead th:last-child {
+  border-right: none;
+}
+
+
+/* ================================
+   TABLE CELLS
+================================ */
+
+tbody td {
+  padding: 15px;
+
+  border-top: 1px solid #e2dce7;
+
+  border-right: 1px solid #e2dce7;
+
+  background: #ffffff;
+
+  font-size: 14px;
+}
+
+tbody td:last-child {
+  border-right: none;
+}
+
+
+/* ================================
+   LECTURE ROW
+================================ */
+
+.lecture-row {
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lecture-row:hover td {
+  background: #faf7fc;
+}
+
+
+/* ================================
+   TEMPORARILY SELECTED LECTURE
+================================ */
+
+.lecture-row.selected td {
+  background: #f0e8f7;
+}
+
+
+/* ================================
+   SAVED LECTURE / SAVED DAY
+================================ */
+
+/*
+    This is the persistent saved state.
+
+    It is reconstructed from:
+
+        localStorage
+        OR
+        sessionStorage
+*/
+
+.lecture-row.saved-topic td {
+  background: #e8dcf3;
+}
+
+.lecture-row.saved-topic td:first-child {
+  box-shadow:
+    inset 5px 0 0 #76529a;
+}
+
+
+/* ================================
+   DAY
+================================ */
+
+.day-cell {
+  width: 150px;
+
+  font-weight: 700;
+
+  color: #5b4075;
+}
+
+
+/* ================================
+   TOPIC
+================================ */
+
+.topic-cell {
+  font-weight: 600;
+
+  color: #3d3544;
+}
+
+
+/* ================================
+   SAVED BADGE
+================================ */
+
+.saved-badge {
+  display: inline-block;
+
+  margin-left: 8px;
+
+  padding: 3px 8px;
+
+  border-radius: 20px;
+
+  background: #76529a;
+
+  color: white;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  background: #76529a;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  background: #87575d;
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.status-message {
+  min-height: 22px;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 14px;
+  color: #62566d;
+}
+
+.status-message.success {
+  color: #47704f;
+}
+
+.status-message.error {
+  color: #984848;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+  body {
+    padding: 20px 10px;
+  }
+  .planner-card {
+    padding: 20px 14px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+}
